@@ -12,7 +12,7 @@ export async function GET_MOVIES_BY_SEARCH(searchParam) {
   return data
 }
 
-export async function GET_MOVIE(imdbID) {
+export async function GET_MOVIE_BY_ID(imdbID) {
   const response = await fetch(
     `http://www.omdbapi.com/?apikey=${_MOVIE_TOKEN}&i=${imdbID}`
   )
