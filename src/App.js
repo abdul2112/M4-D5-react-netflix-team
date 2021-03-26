@@ -2,6 +2,7 @@ import { Route, Switch } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import AdminPage from './pages/AdminPage'
 
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
 function App() {
