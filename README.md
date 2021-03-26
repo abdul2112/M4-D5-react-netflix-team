@@ -8,7 +8,8 @@
 > Rebuild of our first buildweek project - This is a version 2 clone of the Spotify Web App.
 <br>
 
-![image](https://user-images.githubusercontent.com/65465380/111052084-dd004f80-844f-11eb-9c40-4997c2e9603e.png)
+![image](https://user-images.githubusercontent.com/65465380/112663759-18881a00-8e51-11eb-986b-c18706d5d80a.png)
+
 
 > All contributors have taken ownership of multiple critical issues and feature enhancements listed on the project boards submitting commits of at the highest standard possible.
 
