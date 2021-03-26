@@ -1,7 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Button, Form, FormControl } from 'react-bootstrap'
+import { render } from '@testing-library/react'
 
 const NavBar = () => {
+
+  render()
   return (
     <nav className="navbar navbar-expand-lg navbar-dark">
       <Link className="navbar-brand" to="/">
@@ -42,10 +46,13 @@ const NavBar = () => {
 
         <ul className="navbar-nav ml-auto">
           <li className="nav-item px-2">
-            <span className="material-icons">
-              <i className="fa fa-search" aria-hidden="true"></i>
-            </span>
-            <span className="material-icons"> Search </span>
+            <Form inline>
+              <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+              <Button variant="outline-light">Search</Button>
+            </Form>
+          </li>
+          <li>
+            <h3></h3>
           </li>
         </ul>
         <div className="navbar-nav btn-group">

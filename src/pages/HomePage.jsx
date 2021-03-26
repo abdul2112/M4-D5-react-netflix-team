@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NavBar from '../components/NavBar'
 import MovieCard from '../components/MovieCard'
+import Footer from '../components/Footer'
 
 import {
   GET_MOVIES_BY_SEARCH,
@@ -15,6 +16,7 @@ class HomePage extends Component {
         <NavBar />
 
         <MovieCard />
+        <Footer />
       </div>
     )
   }
