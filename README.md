@@ -18,7 +18,7 @@
 > Tools, libraries and awesome tech sanctioned for this project
 
 - Major languages - HTML, SCSS, Javascript(ES6)
-- Frameworks - BootstrapV5
+- Frameworks - Reactjs 17 BootstrapV4.6
 - Technologies - Netlify Hosting & CDN
 - Infrastructure - Github CICD
 
