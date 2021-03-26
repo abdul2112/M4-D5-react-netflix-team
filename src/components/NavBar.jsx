@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 
 const NavBar = () => {
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <Link class="navbar-brand" to="/">
+    <nav className="navbar navbar-expand-lg navbar-dark">
+      <Link className="navbar-brand" to="/">
         <img
-          class="size-grow"
+          className="size-grow"
           src="./assets/src/Netflix-Logo.wine.svg"
           width="130px"
           height="auto"
@@ -15,7 +15,7 @@ const NavBar = () => {
       </Link>
 
       <button
-        class="navbar-toggler"
+        className="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbarSupportedContent"
@@ -23,47 +23,47 @@ const NavBar = () => {
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span className="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <Link class="nav-link" to="/">
-              Home <span class="sr-only">(current)</span>
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item active">
+            <Link className="nav-link" to="/">
+              Home <span className="sr-only">(current)</span>
             </Link>
           </li>
-          <li class="nav-item">
-            <Link class="nav-link" to="/admin">
+          <li className="nav-item">
+            <Link className="nav-link" to="/admin">
               BackOffice
             </Link>
           </li>
         </ul>
 
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item px-2">
-            <span class="material-icons">
-              <i class="fa fa-search" aria-hidden="true"></i>
+        <ul className="navbar-nav ml-auto">
+          <li className="nav-item px-2">
+            <span className="material-icons">
+              <i className="fa fa-search" aria-hidden="true"></i>
             </span>
-            <span class="material-icons"> Search </span>
+            <span className="material-icons"> Search </span>
           </li>
         </ul>
-        <div class="navbar-nav btn-group">
+        <div className="navbar-nav btn-group">
           <button
             type="button"
-            class="btn btn-ghost dropdown-toggle"
+            className="btn btn-ghost dropdown-toggle"
             data-toggle="dropdown"
             aria-haspopup="true"
             aria-expanded="false"
           >
-            <img src="/assets/src/adult-1.png" class="mr-1" width="32px" />
-            <span class="material-icons">User Name</span>
+            <img src="/assets/src/adult-1.png" className="mr-1" width="32px" />
+            <span className="material-icons">User Name</span>
           </button>
-          <div class="dropdown-menu dropdown-menu-right special-background">
-            <button class="dropdown-item" type="button">
+          <div className="dropdown-menu dropdown-menu-right special-background">
+            <button className="dropdown-item" type="button">
               Login BackOffice
             </button>
-            <button class="dropdown-item" type="button">
+            <button className="dropdown-item" type="button">
               Share
             </button>
           </div>
