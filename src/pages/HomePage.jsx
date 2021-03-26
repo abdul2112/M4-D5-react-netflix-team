@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import NavBar from '../components/NavBar'
+import MovieCard from '../components/MovieCard'
 
 class HomePage extends Component {
   state = {}
@@ -8,6 +9,8 @@ class HomePage extends Component {
       <div>
         {' Navbar '}
         <NavBar />
+
+        <MovieCard />
       </div>
     )
   }
