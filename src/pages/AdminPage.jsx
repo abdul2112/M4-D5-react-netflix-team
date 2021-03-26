@@ -6,8 +6,8 @@ class AdminPage extends Component {
   render() {
     return (
       <div>
-        <h3>AdminPage</h3>
-        <NavBar />)
+        <NavBar />
+        <h3 className="text-white">AdminPage</h3>
       </div>
     )
   }
