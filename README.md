@@ -5,7 +5,7 @@
 
 #### NETFLIX REACT TEAM PROJECT - [Live demo](https://spotify-v2.netlify.app/)
 
-> Rebuild of our first buildweek project - This is a version 2 clone of the Spotify Web App.
+> Team frontend project built using Reactjs
 <br>
 
 ![image](https://user-images.githubusercontent.com/65465380/112663759-18881a00-8e51-11eb-986b-c18706d5d80a.png)
