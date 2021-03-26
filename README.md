@@ -77,9 +77,6 @@ Our 'main' deployment branch is CI into Netlify so any pushes to the main branch
     👤 Bavid Zapata
   </dv>
   <div>
-    👤 Tony
-  </dv>
-  <div>
     👤 Sean Knowles
     <a href="https://github.com/SKopsap">Github</a> |
     <a href="https://linkedin.com/seanknowlesmd">LinkedIn</a>
