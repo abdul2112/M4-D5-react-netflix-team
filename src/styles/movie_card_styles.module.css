@@ -69,7 +69,8 @@
   border-color: #e5e5e5;
 }
 
-.commentBtn:hover {
+button.commentBtn:hover {
+  background-color: transparent;
   animation: gradientSlide 4s ease infinite;
   border: 0px solid transparent;
 }
