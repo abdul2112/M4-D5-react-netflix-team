@@ -13,7 +13,6 @@ class MovieSection extends React.Component {
 
   async componentDidMount() {
     const searchResults = await GET_MOVIES_BY_SEARCH(this.props.searchQuery); // returns array
-
     this.setState({ moviesArray: searchResults.Search });
   }
 

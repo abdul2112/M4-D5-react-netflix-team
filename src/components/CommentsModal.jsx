@@ -1,6 +1,5 @@
 import React from "react";
 import { Modal, Button, Card, ListGroup } from "react-bootstrap";
-import { GET_COMMENT_BY_ID } from "../services/comments.service";
 
 class CommentsModal extends React.Component {
   state = {};
@@ -17,7 +16,7 @@ class CommentsModal extends React.Component {
               <h4 className="text-center">Last reviews...</h4>
             </Card.Header>
             <ListGroup variant="flush">
-              <ListGroup.Item>Cras justo odio</ListGroup.Item>
+              <ListGroup.Item>g</ListGroup.Item>
               <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
               <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
             </ListGroup>
