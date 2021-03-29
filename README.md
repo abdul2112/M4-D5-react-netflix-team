@@ -50,7 +50,7 @@ Main branch        |
 |                  | /   ex. branch: toni/header-img-fix  
 |                  |/ 
 |                  |
-main ------------ dev <------> freature/branches (Ekow, Toni, Huseyin & Sean)
+main ------------ dev <------> freature/branches (Baxtiyor, Sean, & David)
 
 ```
 
