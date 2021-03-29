@@ -5,6 +5,7 @@ class CommentsModal extends React.Component {
   state = {};
 
   render() {
+    console.log(this.props.commentslist);
     return (
       <Modal {...this.props} size="lg" aria-labelledby="movie-reviews" centered>
         <Modal.Header className="bg-dark" closeButton>
@@ -16,9 +17,17 @@ class CommentsModal extends React.Component {
               <h4 className="text-center">Last reviews...</h4>
             </Card.Header>
             <ListGroup variant="flush">
-              <ListGroup.Item>g</ListGroup.Item>
-              <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-              <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+              {this.props.commentslist.length > 0 ? (
+                this.props.commentslist.map((comment) => (
+                  <ListGroup.Item key={comment._id}>
+                    {comment.comment}
+                  </ListGroup.Item>
+                ))
+              ) : (
+                <ListGroup.Item>
+                  Not comments yet! Be the first...
+                </ListGroup.Item>
+              )}
             </ListGroup>
           </Card>
           <p>

@@ -15,9 +15,8 @@ class HomePage extends React.Component {
   setModalShow = async (bool, movieId) => {
     this.setState({ modalShow: bool, movieID: movieId });
     if (bool) {
-      let commentsResults = await GET_COMMENT_BY_ID("tt1201607"); //returns array of comments for movie ID
+      let commentsResults = await GET_COMMENT_BY_ID(movieId); //returns array of comments for movie ID
       this.setState({ comments: commentsResults });
-      console.log("printing comments", commentsResults);
     }
   };
   render() {
