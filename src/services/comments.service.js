@@ -66,12 +66,11 @@ export async function GET_COMMENT_BY_ID(commentID) {
     }
   );
   const data = await response.json();
-  console.log("This are commments in folder services", data);
 
   return data;
 }
 
-export async function EDIT_COMMENT(comment) {
+export async function EDIT_COMMENT(commentID, comment) {
   /**
    *
    * "comment": "A good movie but definitely I don't like many parts of the plot",
@@ -80,7 +79,7 @@ export async function EDIT_COMMENT(comment) {
    *
    */
   const response = await fetch(
-    `https://striveschool-api.herokuapp.com/api/comments/${comment._id}`,
+    `https://striveschool-api.herokuapp.com/api/comments/${commentID}`,
     {
       headers: {
         "Content-Type": "applicatoin/json",

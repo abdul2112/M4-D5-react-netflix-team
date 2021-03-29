@@ -1,10 +1,7 @@
 import React from "react";
-import { Row, Container } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import MovieCard from "../components/MovieCard";
-import {
-  GET_MOVIES_BY_SEARCH,
-  GET_MOVIE_BY_ID,
-} from "../services/movies.service";
+import { GET_MOVIES_BY_SEARCH } from "../services/movies.service";
 
 class MovieSection extends React.Component {
   state = {

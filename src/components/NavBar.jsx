@@ -1,11 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { Button, Form, FormControl } from 'react-bootstrap'
-import { render } from '@testing-library/react'
+import React from "react";
+import { Link } from "react-router-dom";
+import { Button, Form, FormControl } from "react-bootstrap";
+import { render } from "@testing-library/react";
 
-const NavBar = () => {
-
-  render()
+const NavBar = (props) => {
+  render();
   return (
     <nav className="navbar navbar-expand-lg navbar-dark">
       <Link className="navbar-brand" to="/">
@@ -47,7 +46,13 @@ const NavBar = () => {
         <ul className="navbar-nav ml-auto">
           <li className="nav-item px-2">
             <Form inline>
-              <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+              <FormControl
+                type="text"
+                placeholder="Search"
+                value={props.search}
+                onChange={(e) => props.setQueryState(e)}
+                className="mr-sm-2"
+              />
               <Button variant="outline-light">Search</Button>
             </Form>
           </li>
@@ -77,7 +82,7 @@ const NavBar = () => {
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Container } from "react-bootstrap";
 import NavBar from "../components/NavBar";
 import MovieSection from "../components/MovieSection";
@@ -11,6 +11,10 @@ class HomePage extends React.Component {
     modalShow: false,
     movieID: "",
     comments: [],
+    searchInput: "",
+  };
+  onQueryChange = (e) => {
+    this.setState({ searchInput: e.currentTarget.value });
   };
   setModalShow = async (bool, movieId) => {
     this.setState({ modalShow: bool, movieID: movieId });
@@ -20,9 +24,13 @@ class HomePage extends React.Component {
     }
   };
   render() {
+    console.log(this.state.searchInput);
     return (
-      <div>
-        <NavBar />
+      <>
+        <NavBar
+          search={this.state.searchInput}
+          setQueryState={this.onQueryChange}
+        />
         <Container>
           <CommentsModal
             commentslist={this.state.comments}
@@ -32,22 +40,22 @@ class HomePage extends React.Component {
           />
           <MovieSection
             setModalShow={this.setModalShow}
-            sectionTitle="Pirates Movies"
+            sectionTitle="Beacuse you saw Pirates..."
             searchQuery="pirates"
           />
           <MovieSection
             setModalShow={this.setModalShow}
-            sectionTitle="Pirates Movies"
+            sectionTitle="Based in your likes..."
             searchQuery="nightmare"
           />
           <MovieSection
             setModalShow={this.setModalShow}
-            sectionTitle="Pirates Movies"
+            sectionTitle="Could you like also Harry..."
             searchQuery="harry"
           />
         </Container>
         <Footer />
-      </div>
+      </>
     );
   }
 }

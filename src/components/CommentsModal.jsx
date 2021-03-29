@@ -1,8 +1,16 @@
 import React from "react";
 import { Modal, Button, Card, ListGroup } from "react-bootstrap";
+import { DELETE_COMMENT, EDIT_COMMENT } from "../services/comments.service";
+import { FaTrashAlt, FaEdit } from "react-icons/fa";
 
 class CommentsModal extends React.Component {
-  state = {};
+  state = {
+    
+  };
+
+  displayEditForm = () => {
+
+  }
 
   render() {
     console.log(this.props.commentslist);
@@ -20,22 +28,40 @@ class CommentsModal extends React.Component {
               {this.props.commentslist.length > 0 ? (
                 this.props.commentslist.map((comment) => (
                   <ListGroup.Item key={comment._id}>
-                    {comment.comment}
+                    {comment.comment}{" "}
+                    <small className="text-black-50"> {comment.author}</small>{" "}
+                    <Button
+                      style={{
+                        borderRadius: "50%",
+                        borderColor: "transparent",
+                      }}
+                      onClick={() => DELETE_COMMENT(comment._id)}
+                      variant="outline-danger"
+                      className="text-center"
+                    >
+                      <FaTrashAlt />
+                    </Button>
+                    <Button
+                      style={{
+                        borderRadius: "50%",
+                        borderColor: "transparent",
+                      }}
+                      onClick={() => this.displayEditForm}
+                      variant="outline-success"
+                      className="text-center"
+                    >
+                      <FaEdit />
+                    </Button>
                   </ListGroup.Item>
                 ))
               ) : (
                 <ListGroup.Item>
-                  Not comments yet! Be the first...
+                  Not comments yet! Be the first...{" "}
+                  <Button variant="success">Add review</Button>
                 </ListGroup.Item>
               )}
             </ListGroup>
           </Card>
-          <p>
-            {this.props.movieID}
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-            ac consectetur ac, vestibulum at eros.
-          </p>
         </Modal.Body>
         <Modal.Footer className="bg-dark">
           <Button onClick={this.props.onHide}>Close</Button>

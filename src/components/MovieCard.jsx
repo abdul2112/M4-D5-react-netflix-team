@@ -17,8 +17,9 @@ class MovieCard extends React.Component {
       <Col className="mb-3 mb-lg-0 px-1">
         <div className={styles.striveCard + " position-relative"}>
           <img
+            alt={"MovieCover" + this.props.movie.Title}
             fluid="true"
-            rounded
+            rounded="true"
             className="w-100"
             src={this.props.movie.Poster}
           />
@@ -30,12 +31,7 @@ class MovieCard extends React.Component {
                 <span className={styles.plus + " ml-auto"}></span>
               </div>
               <h6>{this.props.movie.Title}</h6>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed
-                mollitia nulla atque corrupti iure quae perspiciatis, odit
-                laborum. Iusto id earum pariatur voluptatem eaque voluptas,
-                labore reprehenderit ad quis vel.
-              </p>
+              <p>This Should be a nice Descriptioon</p>
               <div className={styles.movieFooter}>
                 <span className="mr-2">{this.props.movie.Year}</span>
                 <FaAddressCard className={styles.materialIcons + " mr-2"} />
@@ -46,8 +42,9 @@ class MovieCard extends React.Component {
                       this.props.setModalShow(true, this.props.movie.imdbID)
                     }
                     className={styles.commentBtn + " " + styles.gradient}
-                    size="sm">
-                    Add Comment{" "}
+                    size="sm"
+                  >
+                    Check reviews{" "}
                     <FaRegComments className={styles.materialIcons} />
                   </Button>
                 </span>
