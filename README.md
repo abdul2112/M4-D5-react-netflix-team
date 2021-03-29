@@ -75,7 +75,7 @@ Our 'main' deployment branch is CI into Netlify so any pushes to the main branch
     👤 Baxtiyor Abdivaitov
   </dv>
   <div>
-    👤 Bavid Zapata
+    👤 David Zapata
   </dv>
   <div>
     👤 Sean Knowles
