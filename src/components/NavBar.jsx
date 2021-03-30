@@ -45,15 +45,14 @@ const NavBar = (props) => {
 
         <ul className="navbar-nav ml-auto">
           <li className="nav-item px-2">
-            <Form inline>
+            <Form onSubmit={(e) => props.handleSubmit(e)}>
               <FormControl
                 type="text"
-                placeholder="Search"
+                placeholder="Type and press Enter"
                 value={props.search}
                 onChange={(e) => props.setQueryState(e)}
                 className="mr-sm-2"
               />
-              <Button variant="outline-light">Search</Button>
             </Form>
           </li>
           <li>
