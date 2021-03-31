@@ -22,10 +22,22 @@ const NavBar = (props) => {
 
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Link className="nav-link" to="/">
+            <Link
+              className={
+                props.location.pathname === "/" ? "nav-link active" : "nav-link"
+              }
+              to="/"
+            >
               Home
             </Link>
-            <Link className="nav-link" to="/admin">
+            <Link
+              className={
+                props.location.pathname === "/admin"
+                  ? "nav-link active"
+                  : "nav-link"
+              }
+              to="/admin"
+            >
               BackOffice
             </Link>
           </Nav>
