@@ -1,31 +1,19 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import NavBar from "../components/NavBar";
 import SearchSection from "../components/SearchSection";
 import MovieSection from "../components/MovieSection";
 import Footer from "../components/Footer";
 import CommentsModal from "../components/CommentsModal";
 import { GET_COMMENT_BY_ID } from "../services/comments.service";
-import { GET_MOVIES_BY_SEARCH } from "../services/movies.service";
+
 
 class HomePage extends React.Component {
   state = {
     modalShow: false,
     movieID: "",
     comments: [],
-    searchInput: "",
-    resultsQueryUser: [],
   };
-  onQueryChange = (e) => {
-    this.setState({ searchInput: e.currentTarget.value });
-  };
-  handleSubmit = async (e) => {
-    e.preventDefault();  
-    let searchQueryUser = await GET_MOVIES_BY_SEARCH(
-      this.state.searchInput.toLowerCase().replaceAll(" ", "+")
-    ); // returns array
-    this.setState({ resultsQueryUser: searchQueryUser.Search });
-  };
+
   setModalShow = async (bool, movieId) => {
     this.setState({ modalShow: bool, movieID: movieId });
     if (bool) {
@@ -37,11 +25,6 @@ class HomePage extends React.Component {
     console.log(this.state.searchInput);
     return (
       <>
-        <NavBar
-          search={this.state.searchInput}
-          setQueryState={this.onQueryChange}
-          handleSubmit={this.handleSubmit}
-        />
         <Container>
           <CommentsModal
             commentslist={this.state.comments}
@@ -49,9 +32,9 @@ class HomePage extends React.Component {
             movieID={this.state.movieID}
             onHide={() => this.setModalShow(false, "")}
           />
-          {this.state.resultsQueryUser.length > 0 && (
+          {this.props.resultsQuery.length > 0 && (
             <SearchSection
-              resultsQuery={this.state.resultsQueryUser}
+              resultsQuery={this.props.resultsQuery}
               setModalShow={this.setModalShow}
               sectionTitle="Results for"
             />

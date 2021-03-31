@@ -1,50 +1,35 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Button, Form, FormControl } from "react-bootstrap";
-import { render } from "@testing-library/react";
+import { Link, withRouter } from "react-router-dom";
+import { Navbar, Nav, Form, FormControl } from "react-bootstrap";
 
 const NavBar = (props) => {
-  render();
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark">
-      <Link className="navbar-brand" to="/">
-        <img
-          className="size-grow"
-          src="./assets/src/Netflix-Logo.wine.svg"
-          width="130px"
-          height="auto"
-          alt=""
-        />
-      </Link>
+    <>
+      <Navbar collapseOnSelect expand="lg" variant="dark">
+        <Link className="navbar-brand" to="/">
+          <Navbar.Brand href="#home">
+            <img
+              className="size-grow"
+              src="./assets/src/Netflix-Logo.wine.svg"
+              width="130px"
+              height="auto"
+              alt="LogoNetflix"
+            />
+          </Navbar.Brand>
+        </Link>
 
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto">
             <Link className="nav-link" to="/">
-              Home <span className="sr-only">(current)</span>
+              Home
             </Link>
-          </li>
-          <li className="nav-item">
             <Link className="nav-link" to="/admin">
               BackOffice
             </Link>
-          </li>
-        </ul>
-
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item px-2">
+          </Nav>
+          <Nav className="px-2">
             <Form onSubmit={(e) => props.handleSubmit(e)}>
               <FormControl
                 type="text"
@@ -54,34 +39,36 @@ const NavBar = (props) => {
                 className="mr-sm-2"
               />
             </Form>
-          </li>
-          <li>
-            <h3></h3>
-          </li>
-        </ul>
-        <div className="navbar-nav btn-group">
-          <button
-            type="button"
-            className="btn btn-ghost dropdown-toggle"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <img src="/assets/src/adult-1.png" className="mr-1" width="32px" />
-            <span className="material-icons">User Name</span>
-          </button>
-          <div className="dropdown-menu dropdown-menu-right special-background">
-            <button className="dropdown-item" type="button">
-              Login BackOffice
+          </Nav>
+          <div className="navbar-nav btn-group">
+            <button
+              type="button"
+              className="btn btn-ghost dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <img
+                src="/assets/src/adult-1.png"
+                className="mr-1"
+                width="32px"
+                alt="usersPic"
+              />
+              <span className="material-icons">User Name</span>
             </button>
-            <button className="dropdown-item" type="button">
-              Share
-            </button>
+            <div className="dropdown-menu dropdown-menu-right special-background">
+              <button className="dropdown-item" type="button">
+                Login BackOffice
+              </button>
+              <button className="dropdown-item" type="button">
+                Share
+              </button>
+            </div>
           </div>
-        </div>
-      </div>
-    </nav>
+        </Navbar.Collapse>
+      </Navbar>
+    </>
   );
 };
 
-export default NavBar;
+export default withRouter(NavBar);
