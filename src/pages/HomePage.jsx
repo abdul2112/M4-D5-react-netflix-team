@@ -1,17 +1,16 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Container, Spinner, Row } from "react-bootstrap";
 import SearchSection from "../components/SearchSection";
 import MovieSection from "../components/MovieSection";
 import Footer from "../components/Footer";
 import CommentsModal from "../components/CommentsModal";
 import { GET_COMMENT_BY_ID } from "../services/comments.service";
 
-
 class HomePage extends React.Component {
   state = {
     modalShow: false,
-    movieID: "",
-    comments: [],
+    movieID: null,
+    comments: null,
   };
 
   setModalShow = async (bool, movieId) => {
@@ -19,20 +18,47 @@ class HomePage extends React.Component {
     if (bool) {
       let commentsResults = await GET_COMMENT_BY_ID(movieId); //returns array of comments for movie ID
       this.setState({ comments: commentsResults });
+    } else {
+      this.setState({ comments: null, movieID: null });
     }
   };
   render() {
-    console.log(this.state.searchInput);
+    console.log(this.state);
     return (
       <>
         <Container>
           <CommentsModal
             commentslist={this.state.comments}
             show={this.state.modalShow}
-            movieID={this.state.movieID}
-            onHide={() => this.setModalShow(false, "")}
+            movieid={this.state.movieID}
+            onHide={this.setModalShow}
           />
-          {this.props.resultsQuery.length > 0 && (
+          <Row className="justify-content-center align-items-center">
+            {this.props.isLoading && (
+              <>
+                <h2 className="px-4">Searching</h2>
+                <Spinner
+                  className="mx-1"
+                  animation="grow"
+                  variant="light"
+                  size="sm"
+                />
+                <Spinner
+                  className="mx-1"
+                  animation="grow"
+                  variant="light"
+                  size="sm"
+                />
+                <Spinner
+                  className="mx-1"
+                  animation="grow"
+                  variant="light"
+                  size="sm"
+                />
+              </>
+            )}
+          </Row>
+          {this.props.resultsQuery && (
             <SearchSection
               resultsQuery={this.props.resultsQuery}
               setModalShow={this.setModalShow}

@@ -1,13 +1,21 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
-import { Navbar, Nav, Form, FormControl } from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  Form,
+  FormControl,
+  Popover,
+  OverlayTrigger,
+  Button,
+} from "react-bootstrap";
 
 const NavBar = (props) => {
   return (
     <>
       <Navbar collapseOnSelect expand="lg" variant="dark">
         <Link className="navbar-brand" to="/">
-          <Navbar.Brand href="#home">
+          <Navbar.Brand>
             <img
               className="size-grow"
               src="./assets/src/Netflix-Logo.wine.svg"
@@ -42,15 +50,34 @@ const NavBar = (props) => {
             </Link>
           </Nav>
           <Nav className="px-2">
-            <Form onSubmit={(e) => props.handleSubmit(e)}>
-              <FormControl
-                type="text"
-                placeholder="Type and press Enter"
-                value={props.search}
-                onChange={(e) => props.setQueryState(e)}
-                className="mr-sm-2"
-              />
-            </Form>
+            <OverlayTrigger
+              show={props.notFound}
+              placement="bottom"
+              overlay={
+                <Popover id="popover-positioned-left">
+                  <div className='d-flex'>
+                    <Popover.Title className="text-dark" as="h3">
+                      Oh snap!
+                    </Popover.Title>
+                    <Button onClick={props.closePopOver} variant="outline-danger" className="ml-auto">x</Button>
+                  </div>
+                  <Popover.Content>
+                    <strong>Can't foounf your movie!</strong> Please try another
+                    title...
+                  </Popover.Content>
+                </Popover>
+              }
+            >
+              <Form onSubmit={(e) => props.handleSubmit(e)}>
+                <FormControl
+                  type="text"
+                  placeholder="Type and press Enter"
+                  value={props.search}
+                  onChange={(e) => props.setQueryState(e)}
+                  className="mr-sm-2"
+                />
+              </Form>
+            </OverlayTrigger>
           </Nav>
           <div className="navbar-nav btn-group">
             <button

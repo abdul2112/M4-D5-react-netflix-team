@@ -1,19 +1,15 @@
 import React from "react";
 import { Modal, Button, Card, ListGroup } from "react-bootstrap";
-import { DELETE_COMMENT, EDIT_COMMENT } from "../services/comments.service";
+import { DELETE_COMMENT } from "../services/comments.service";
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
 
 class CommentsModal extends React.Component {
-  state = {
-    
-  };
+  state = {};
 
-  displayEditForm = () => {
-
-  }
+  displayEditForm = () => {};
 
   render() {
-    console.log(this.props.commentslist);
+    console.log(this.props);
     return (
       <Modal {...this.props} size="lg" aria-labelledby="movie-reviews" centered>
         <Modal.Header className="bg-dark" closeButton>
@@ -25,7 +21,7 @@ class CommentsModal extends React.Component {
               <h4 className="text-center">Last reviews...</h4>
             </Card.Header>
             <ListGroup variant="flush">
-              {this.props.commentslist.length > 0 ? (
+              {this.props.commentslist ? (
                 this.props.commentslist.map((comment) => (
                   <ListGroup.Item key={comment._id}>
                     {comment.comment}{" "}
@@ -64,7 +60,7 @@ class CommentsModal extends React.Component {
           </Card>
         </Modal.Body>
         <Modal.Footer className="bg-dark">
-          <Button onClick={this.props.onHide}>Close</Button>
+          <Button onClick={() => this.props.onHide(false)}>Close</Button>
         </Modal.Footer>
       </Modal>
     );

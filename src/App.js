@@ -10,17 +10,45 @@ import { GET_MOVIES_BY_SEARCH } from "./services/movies.service";
 class App extends React.Component {
   state = {
     searchInput: "",
-    resultsQueryUser: [],
+    resultsQueryUser: null,
+    isLoading: false,
+    notFound: false,
+    errorAPI: null,
   };
   onQueryChange = (e) => {
     this.setState({ searchInput: e.currentTarget.value });
   };
+  closePopOver = () => {
+    this.setState({ notFound: false });
+  };
   handleSubmit = async (e) => {
     e.preventDefault();
-    let searchQueryUser = await GET_MOVIES_BY_SEARCH(
-      this.state.searchInput.toLowerCase().replaceAll(" ", "+")
-    ); // returns array
-    this.setState({ resultsQueryUser: searchQueryUser.Search });
+    try {
+      this.setState({
+        isLoading: true,
+      });
+      let searchQueryUser = await GET_MOVIES_BY_SEARCH(
+        this.state.searchInput.toLowerCase().replaceAll(" ", "+")
+      ); // returns array
+      if (searchQueryUser.Response === "True") {
+        this.setState({
+          resultsQueryUser: searchQueryUser.Search,
+          isLoading: false,
+          notFound: false,
+        });
+      } else {
+        console.log(searchQueryUser.Error);
+        this.setState({
+          ...this.state,
+          notFound: true,
+          errorAPI: searchQueryUser.Error,
+          isLoading: false,
+        });
+        console.log(this.state.errorAPI);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   render() {
     return (
@@ -30,8 +58,20 @@ class App extends React.Component {
             search={this.state.searchInput}
             setQueryState={this.onQueryChange}
             handleSubmit={this.handleSubmit}
+            notFound={this.state.notFound}
+            closePopOver={this.closePopOver}
           />
-          <Route path="/" exact render={(routerProps) => <HomePage {...routerProps}  resultsQuery={this.state.resultsQueryUser}/>} />
+          <Route
+            path="/"
+            exact
+            render={(routerProps) => (
+              <HomePage
+                {...routerProps}
+                resultsQuery={this.state.resultsQueryUser}
+                isLoading={this.state.isLoading}
+              />
+            )}
+          />
           <Route path="/admin" component={AdminPage} />
         </BrowserRouter>
       </>

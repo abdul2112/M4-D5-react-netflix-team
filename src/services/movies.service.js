@@ -9,7 +9,6 @@ export async function GET_MOVIES_BY_SEARCH(searchParam) {
     `http://www.omdbapi.com/?apikey=${_MOVIE_TOKEN}&s=${searchParam}`
   );
   const data = await response.json();
-  console.log(data);
   return data;
 }
 
