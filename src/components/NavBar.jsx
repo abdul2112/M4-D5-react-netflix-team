@@ -46,7 +46,7 @@ const NavBar = (props) => {
               }
               to="/admin"
             >
-              BackOffice
+              Register
             </Link>
           </Nav>
           <Nav className="px-2">
