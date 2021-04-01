@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Spinner } from "react-bootstrap";
+import { Row, Spinner, Alert } from "react-bootstrap";
 import MovieCard from "../components/MovieCard";
 import { GET_MOVIES_BY_SEARCH } from "../services/movies.service";
 
@@ -8,6 +8,11 @@ class MovieSection extends React.Component {
     moviesArray: [],
     isLoading: false,
     errorAPI: null,
+    showAlert: false,
+  };
+
+  setShowAlert = (bool) => {
+    this.setState({ showAlert: bool });
   };
 
   async componentDidMount() {
@@ -27,6 +32,7 @@ class MovieSection extends React.Component {
           errorAPI: searchResults.Error,
           isLoading: false,
         });
+        this.setShowAlert(true);
         console.log(this.state.errorAPI);
       }
     } catch (error) {
@@ -37,9 +43,19 @@ class MovieSection extends React.Component {
   render() {
     return (
       <>
-        <Row className="justify-content-center align-items-center">
-          {this.state.isLoading && (
-            <>
+        {this.state.errorAPI && this.state.showAlert && (
+          <Alert
+            variant="warning"
+            onClose={() => this.setShowAlert(false)}
+            dismissible
+          >
+            <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+            <p>Damm something went wrong with API...</p>
+          </Alert>
+        )}
+        {this.state.isLoading && (
+          <>
+            <Row className="justify-content-center align-items-center">
               <h2 className="px-4">Loading</h2>
               <Spinner
                 className="mx-1"
@@ -59,9 +75,9 @@ class MovieSection extends React.Component {
                 variant="light"
                 size="sm"
               />
-            </>
-          )}
-        </Row>
+            </Row>
+          </>
+        )}
         <h2 className="text-white">{this.props.sectionTitle}</h2>
         <Row className="no-gutters row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mb-4">
           {this.state.moviesArray.slice(0, 4).map((movie) => (

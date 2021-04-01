@@ -1,11 +1,12 @@
 import React from "react";
-import { Modal, Button, Card, ListGroup } from "react-bootstrap";
+import { Modal, Button, Card, ListGroup, Alert } from "react-bootstrap";
 import { DELETE_COMMENT } from "../services/comments.service";
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
 
 class CommentsModal extends React.Component {
   state = {};
 
+  
   displayEditForm = () => {};
 
   render() {

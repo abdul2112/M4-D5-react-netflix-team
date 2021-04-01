@@ -33,9 +33,9 @@ class HomePage extends React.Component {
             movieid={this.state.movieID}
             onHide={this.setModalShow}
           />
-          <Row className="justify-content-center align-items-center">
-            {this.props.isLoading && (
-              <>
+          {this.props.isLoading && (
+            <>
+              <Row className="justify-content-center align-items-center">
                 <h2 className="px-4">Searching</h2>
                 <Spinner
                   className="mx-1"
@@ -55,9 +55,9 @@ class HomePage extends React.Component {
                   variant="light"
                   size="sm"
                 />
-              </>
-            )}
-          </Row>
+              </Row>
+            </>
+          )}
           {this.props.resultsQuery && (
             <SearchSection
               resultsQuery={this.props.resultsQuery}
