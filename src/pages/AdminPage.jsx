@@ -1,5 +1,6 @@
+
 import React from 'react'
-import { Form, Button, Row, Col } from 'react-bootstrap'
+import { Form, Button, Row, Col, Alert } from 'react-bootstrap'
 class AdminPage extends React.Component {
   state = {
     register: {
@@ -19,6 +20,7 @@ class AdminPage extends React.Component {
 
 
   submitData = (event) => {
+
     event.preventDefault()
     const { name, value } = event.target;
     let errors = this.state.register;
@@ -66,7 +68,18 @@ class AdminPage extends React.Component {
       default:
         break;
 
+
     }
+    < Alert variant="success" >
+      <Alert.Heading>Hey, nice to see you</Alert.Heading>
+      <p>
+        Aww yeah, you successfully read this important alert message. This example
+        text is going to run a bit longer so that you can see how spacing within an
+        alert works with this kind of content.
+        </p>
+    </Alert >
+
+
   }
   render() {
     return (
@@ -78,19 +91,21 @@ class AdminPage extends React.Component {
 
               <Form.Group >
                 <Form.Label>Name</Form.Label>
-                <Form.Control onChange={e => this.setState({
+                <Form.Control minLength="3" onChange={e => this.setState({
                   register: {
                     ...this.state.register,
                     name: e.target.value
                   }
                 })} value={this.state.register.name} type="text" placeholder="Enter Your Name"
                   required
+
                 />
+
               </Form.Group>
 
               <Form.Group >
                 <Form.Label>Surname</Form.Label>
-                <Form.Control onChange={e => this.setState({
+                <Form.Control minLength="2" onChange={e => this.setState({
                   register: {
                     ...this.state.register,
                     surname: e.target.value
@@ -116,7 +131,7 @@ class AdminPage extends React.Component {
 
               <Form.Group >
                 <Form.Label>Password</Form.Label>
-                <Form.Control onChange={e => this.setState({
+                <Form.Control pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" onChange={e => this.setState({
                   register: {
                     ...this.state.register,
                     password: e.target.value
@@ -128,7 +143,7 @@ class AdminPage extends React.Component {
 
               <Form.Group >
                 <Form.Label>Year Of Birth</Form.Label>
-                <Form.Control onChange={e => this.setState({
+                <Form.Control min="1917" onChange={e => this.setState({
                   register: {
                     ...this.state.register,
                     YearOfBirth: e.target.value
@@ -164,7 +179,7 @@ class AdminPage extends React.Component {
 
               <Form.Group >
                 <Form.Label>Zip</Form.Label>
-                <Form.Control onChange={e => this.setState({
+                <Form.Control minLength="5" maxLength="5" title="your zip code should be 5 digit" onChange={e => this.setState({
                   register: {
                     ...this.state.register,
                     ZipCode: e.target.value
@@ -176,12 +191,12 @@ class AdminPage extends React.Component {
 
               <Form.Group >
                 <Form.Label>Enter your Card Number</Form.Label>
-                <Form.Control onChange={e => this.setState({
+                <Form.Control minLength="16" maxLength="16" pattern="[0-9]" title="Your credit card Accouint should be 16 digit number" onChange={e => this.setState({
                   register: {
                     ...this.state.register,
                     Account: e.target.value
                   }
-                })} value={this.state.register.Account} type="number" placeholder="Credit card account"
+                })} value={this.state.register.Account} type="text" placeholder="Credit card account"
                   required
                 />
               </Form.Group>
